@@ -38,17 +38,14 @@ export function ChartFrame({ title, children }: { title: string; children: React
       <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
         {title}
       </p>
-      <div className="h-56 w-full">
-        <ResponsiveContainer width="100%" height="100%">
-          {children as React.ReactElement}
-        </ResponsiveContainer>
-      </div>
+      <div className="h-56 w-full">{children}</div>
     </div>
   );
 }
 
 export function BarSeries({ data, color = "var(--chart-1)" }: { data: Series; color?: string }) {
   return (
+    <ResponsiveContainer width="100%" height="100%">
     <BarChart data={data} margin={{ top: 4, right: 8, left: -18, bottom: 0 }}>
       <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
       <XAxis dataKey="name" tickLine={false} axisLine={false} {...AXIS} />
@@ -56,12 +53,14 @@ export function BarSeries({ data, color = "var(--chart-1)" }: { data: Series; co
       <Tooltip {...TOOLTIP} />
       <Bar dataKey="value" radius={[8, 8, 4, 4]} fill={color} animationDuration={900} />
     </BarChart>
+    </ResponsiveContainer>
   );
 }
 
 export function RiskDonut({ data }: { data: Series }) {
   const colors = ["var(--risk-low)", "var(--risk-medium)", "var(--risk-high)"];
   return (
+    <ResponsiveContainer width="100%" height="100%">
     <PieChart>
       <Tooltip {...TOOLTIP} />
       <Legend wrapperStyle={{ fontSize: 11 }} />
@@ -71,11 +70,13 @@ export function RiskDonut({ data }: { data: Series }) {
         ))}
       </Pie>
     </PieChart>
+    </ResponsiveContainer>
   );
 }
 
 export function PeerCompare({ data }: { data: { name: string; subject: number; peer: number }[] }) {
   return (
+    <ResponsiveContainer width="100%" height="100%">
     <AreaChart data={data} margin={{ top: 4, right: 8, left: -18, bottom: 0 }}>
       <defs>
         <linearGradient id="gSubject" x1="0" y1="0" x2="0" y2="1">
@@ -98,11 +99,13 @@ export function PeerCompare({ data }: { data: { name: string; subject: number; p
       />
       <Line type="monotone" dataKey="peer" name="Peer median" stroke="var(--chart-2)" strokeWidth={2} dot={false} />
     </AreaChart>
+    </ResponsiveContainer>
   );
 }
 
 export function SignalRadar({ data }: { data: Series }) {
   return (
+    <ResponsiveContainer width="100%" height="100%">
     <RadarChart data={data} outerRadius="72%">
       <PolarGrid stroke="var(--border)" />
       <PolarAngleAxis dataKey="name" tick={{ fill: "var(--muted-foreground)", fontSize: 10 }} />
@@ -116,11 +119,13 @@ export function SignalRadar({ data }: { data: Series }) {
         animationDuration={900}
       />
     </RadarChart>
+    </ResponsiveContainer>
   );
 }
 
 export function TrendLine({ data }: { data: Series }) {
   return (
+    <ResponsiveContainer width="100%" height="100%">
     <LineChart data={data} margin={{ top: 4, right: 8, left: -18, bottom: 0 }}>
       <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
       <XAxis dataKey="name" tickLine={false} axisLine={false} {...AXIS} />
@@ -135,5 +140,6 @@ export function TrendLine({ data }: { data: Series }) {
         animationDuration={900}
       />
     </LineChart>
+    </ResponsiveContainer>
   );
 }
