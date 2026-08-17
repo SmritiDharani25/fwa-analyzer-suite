@@ -127,7 +127,7 @@ function BatchProvidersPage() {
       ) : (
         <div className="space-y-6">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <KpiCard label="Total Providers" value={kpis!.total} hint={file?.name} />
+            <KpiCard label="Total Providers" value={kpis!.total} hint={file?.name ?? ""} />
             <KpiCard label="Suspicious Cases" value={kpis!.suspicious} tone="high" delay={60} />
             <KpiCard label="High Risk Providers" value={kpis!.high} tone="high" delay={120} />
             <KpiCard label="Medium Risk Providers" value={kpis!.medium} tone="medium" delay={180} />

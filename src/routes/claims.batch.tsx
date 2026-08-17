@@ -128,7 +128,7 @@ function BatchClaimsPage() {
       ) : (
         <div className="space-y-6">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <KpiCard label="Total Claims" value={kpis!.total} hint={file?.name} />
+            <KpiCard label="Total Claims" value={kpis!.total} hint={file?.name ?? ""} />
             <KpiCard label="Suspicious Cases" value={kpis!.suspicious} tone="high" delay={60} />
             <KpiCard label="High Risk" value={kpis!.high} tone="high" delay={120} />
             <KpiCard label="Medium Risk" value={kpis!.medium} tone="medium" delay={180} />
