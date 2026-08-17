@@ -48,7 +48,7 @@ function LoginPage() {
           </span>
         </Link>
 
-        <div className="surface-panel animate-float p-8">
+        <div className="surface-panel animate-rise p-8 shadow-lift">
           <div className="text-center">
             <span className="inline-flex size-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
               <Lock className="size-6" />
